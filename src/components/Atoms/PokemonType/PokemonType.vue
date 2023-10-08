@@ -1,7 +1,7 @@
 <template>
   <span class="commun" :class="pokemonType">{{ pokemonType }}</span>
 </template>
-<script setup>
+<script setup lang="ts">
   import { defineProps } from 'vue';
  defineProps({
   pokemonType : {

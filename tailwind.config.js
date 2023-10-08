@@ -1,6 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./public/**/*.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+  content: ['./public/**/*.html', './src/**/*.{vue,js,ts,jsx,tsx}',
+  'node_modules/flowbite-vue/**/*.{js,jsx,ts,tsx}',
+  'node_modules/flowbite/**/*.{js,jsx,ts,tsx}'],
   presets: [],
   darkMode: 'media', // or 'class'
   theme: {
@@ -988,6 +990,9 @@ module.exports = {
       50: '50',
     },
   },
-  plugins: [],
+  plugins: [
+    // eslint-disable-next-line no-undef
+    require('flowbite/plugin')
+  ],
 }
 

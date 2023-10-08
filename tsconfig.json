@@ -19,12 +19,18 @@
       "jsx": "preserve",
       "esModuleInterop": true,
       "skipLibCheck": true,
-      "forceConsistentCasingInFileNames": true
+      "forceConsistentCasingInFileNames": true,
+      "paths": {
+        "@/*": [
+         "./*"
+        ]
+       }
     },
     "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.vue"
-  ]
+      "src/**/*.ts", // Include TypeScript files in the src directory
+      "src/**/*.d.ts", // Include declaration files
+      "src/**/*.tsx", // Include TypeScript with JSX files
+      "src/**/*.vue" // Include Vue.js single-file components
+    ]
 }
 

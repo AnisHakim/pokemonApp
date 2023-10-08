@@ -10,20 +10,21 @@
     <Pagination v-show="!isLoading" class="flex justify-center w-full mb-14" @pageNumberListner="handlePagination"/>
 </template>
 
-<script setup>
-import Loader from '@/components/Loader/Loader.vue'
+<script setup lang="ts">
+import Loader from '@/components/Atoms/Loader/Loader.vue'
 import { usePokemonStore } from '@/stores/PokemonStore'
-import PokemonCard from '../PokemonCard/PokemonCard.vue'
-import Pagination from '../Pagination/Pagination.vue'
+import PokemonCard from '@/components/Molecules/PokemonCard/PokemonCard.vue'
+import Pagination from '@/components/Atoms/Pagination/Pagination.vue'
 import { ref } from 'vue'
 const pokemonStore = usePokemonStore()
 const isLoading = ref(true)
 if (pokemonStore.pokemonsList.length === 0) {
     isLoading.value = true;
 pokemonStore.fetchPokemons(0, 25).then(() =>isLoading.value = false)
-    
+} else {
+    isLoading.value= false;
 }
-async function handlePagination(page) { 
+async function handlePagination(page : number) { 
     isLoading.value = true;
    await  pokemonStore.fetchPokemons((page - 1)*25, 25)
     isLoading.value = false;

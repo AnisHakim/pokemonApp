@@ -1,6 +1,6 @@
 <script setup>
 import { defineProps } from 'vue'
-import PokemonType from '@/components/PokemonType/PokemonType.vue'
+import PokemonType from '@/components/Atoms/PokemonType/PokemonType.vue'
 import { formatingPokemonId } from '@/utils'
 defineProps({
   pokemon: {
@@ -11,12 +11,19 @@ defineProps({
 </script>
 
 <template>
-  <div class="card">
+  <div class="card sm:w-[230px] w-[150px]">
     <router-link :to="`/pokemon/${pokemon.name}`">
-        <div class="image">
-        <span class="pokemon-number">#{{ formatingPokemonId(pokemon.id)}}</span>
-        <img class="zoom-in" width="10" :alt="pokemon.name" :src="pokemon.img" />
-        <strong class="name">{{ pokemon.name.toUpperCase() }}</strong>
+      <div class="image-container sm:w-[230px] sm:h-[230px] w-[150px] h-[155px]">
+        <span
+          class="pokemon-number absolute sm:left-[190px] left-[120px] sm:top-[10px] top-[2px] font-medium sm:font-bold"
+          >#{{ formatingPokemonId(pokemon.id) }}</span
+        >
+        <img
+          class="zoom-in sm:w-[200px] sm:h-[200px] w-[130px] h-[130px]"
+          :alt="pokemon.name"
+          :src="pokemon.img"
+        />
+        <strong class="justify-center flex text-gray-500">{{ pokemon.name.toUpperCase() }}</strong>
       </div>
     </router-link>
 
@@ -29,17 +36,9 @@ defineProps({
 </template>
 
 <style>
-.name {
-  justify-content: center;
-  color: grey;
-  display: flex;
-}
-
-.image {
+.image-container {
   cursor: pointer;
   background: rgb(248, 233, 405);
-  width: 235px;
-  height: 235px;
   color: #e1ede7;
   border: 1px solid #eee;
   border-radius: 2px;
@@ -49,16 +48,7 @@ defineProps({
   overflow: hidden;
   transition: 0.3s;
 }
-
-.image img {
-  max-width: 500px;
-  width: 200px;
-  max-height: 500px;
-  height: 200px;
-}
-
 .card {
-  width: 235px;
   border-radius: 10px;
   transition: 0.5s;
   margin-bottom: 2em;
@@ -69,14 +59,9 @@ defineProps({
 }
 
 .pokemon-number {
-  position: absolute;
-  top: 12px;
-  left: 200px;
   font-size: 10px;
-  font-weight: 700;
-  color: #2F4F4F;
+  color: #2f4f4f;
   text-shadow: #2b303a 0px 1px 1px;
-  line-height: 1.6;
 }
 .zoom-in {
   -webkit-transform: scale(0.9);
@@ -96,28 +81,6 @@ defineProps({
   }
   100% {
     transform: translateX(0);
-  }
-}
-
-@media (max-width: 576px) {
-  .image {
-    width: 150px;
-    height: 150px;
-    font-size : 12px;
-  }
-  .pokemon-number {
-    left:120px;
-    top: 2px;
-    font-weight: 500;
-    font-size: 9px;
-  }
-
-  .image img {
-    width: 130px;
-    height: 130px;
-  }
-  .card {
-    width: 150px;
   }
 }
 </style>
