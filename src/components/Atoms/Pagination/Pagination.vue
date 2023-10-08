@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { defineProps } from 'vue';
- defineProps({
+ const props = defineProps({
   totalItems : {
       type : Number,
       default: 1000
@@ -13,6 +13,10 @@
         type : Number,
       default: 5
     },
+    pageIndex: {
+      type:Number,
+      default:1
+    }
 
 })
   import { ref } from "vue";
@@ -23,7 +27,7 @@
     emit('pageNumberListner', page);
   };
 
-  const currentPage = ref(1);
+  const currentPage = ref(props.pageIndex);
 </script>
 
 <template>

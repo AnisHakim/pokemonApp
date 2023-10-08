@@ -27,6 +27,8 @@
        }
     },
     "include": [
+      "src/**/*", //if it happend in inside src
+      "components/**/*",
       "src/**/*.ts", // Include TypeScript files in the src directory
       "src/**/*.d.ts", // Include declaration files
       "src/**/*.tsx", // Include TypeScript with JSX files

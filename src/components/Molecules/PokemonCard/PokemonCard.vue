@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { defineProps } from 'vue'
 import PokemonType from '@/components/Atoms/PokemonType/PokemonType.vue'
 import { formatingPokemonId } from '@/utils'
@@ -38,7 +38,7 @@ defineProps({
 <style>
 .image-container {
   cursor: pointer;
-  background: rgb(248, 233, 405);
+  background: #F8E9FF;
   color: #e1ede7;
   border: 1px solid #eee;
   border-radius: 2px;

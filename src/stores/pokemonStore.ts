@@ -23,7 +23,8 @@ interface PokemonDetails {
 export const usePokemonStore = defineStore('pokemonStore', {
   state: (): {
     pokemonsList: Pokemon[]
-    pokemonDetails: PokemonDetails
+    pokemonDetails: PokemonDetails,
+    pageIndex: Number
   } => ({
     pokemonsList: [],
     pokemonDetails: {
@@ -34,7 +35,8 @@ export const usePokemonStore = defineStore('pokemonStore', {
       stats: [],
       types: [],
       img:''
-    }
+    },
+    pageIndex:1
   }),
   getters: {
     pokemonGetDetails : (state) => {
@@ -81,6 +83,9 @@ export const usePokemonStore = defineStore('pokemonStore', {
       this.pokemonDetails.img = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${formatingPokemonId(
         response.id
       )}.png`
+    },
+    updatePageIndex(pageIndex : number) {
+      this.pageIndex = pageIndex
     }
   }
 })

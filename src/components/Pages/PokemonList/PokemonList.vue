@@ -7,7 +7,7 @@
             <PokemonCard  :pokemon="pokemon" />
           </div>
       </div>
-    <Pagination v-show="!isLoading" class="flex justify-center w-full mb-14" @pageNumberListner="handlePagination"/>
+    <Pagination v-show="!isLoading" class="flex justify-center w-full mb-14" :pageIndex="pokemonStore.pageIndex" @pageNumberListner="handlePagination"/>
 </template>
 
 <script setup lang="ts">
@@ -26,6 +26,7 @@ pokemonStore.fetchPokemons(0, 25).then(() =>isLoading.value = false)
 }
 async function handlePagination(page : number) { 
     isLoading.value = true;
+    pokemonStore.updatePageIndex(page)
    await  pokemonStore.fetchPokemons((page - 1)*25, 25)
     isLoading.value = false;
 }

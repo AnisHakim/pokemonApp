@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-300 w-full h-screen flex justify-center items-center">
+  <div class="bg-[#F8E9FF] w-full h-screen flex justify-center items-center">
     <div v-if="isLoading">
         <Loader/>
     </div>
@@ -31,7 +31,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import Loader from '@/components/Atoms/Loader/Loader.vue'
 import { usePokemonStore } from '@/stores/pokemonStore'
 import PokemonType from '@/components/Atoms/PokemonType/PokemonType.vue'
