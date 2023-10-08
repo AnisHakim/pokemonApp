@@ -12,7 +12,8 @@ export const usePokemonStore = defineStore('pokemonStore', {
   state: (): {
     pokemonsList: Pokemon[]
   } => ({
-    pokemonsList: []
+    pokemonsList: [],
+    indexOfPokemons : 1
   }),
   getters: {
     pagePokemonList: (state) => {
@@ -32,7 +33,7 @@ export const usePokemonStore = defineStore('pokemonStore', {
           types: response.types.map(
             (pokemonType: { type: { name: string } }) => pokemonType.type.name
           ),
-          img: `https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/${formatingPokemonId(response.id)}.png`
+          img: `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${formatingPokemonId(response.id)}.png`
         }
 
         newList.push(pokemon)

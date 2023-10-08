@@ -1,6 +1,7 @@
 <script setup>
 import { defineProps } from 'vue'
-import PokemonType from '../PokemonType/PokemonType.vue'
+import PokemonType from '@/components/PokemonType/PokemonType.vue'
+import { formatingPokemonId } from '@/utils'
 defineProps({
   pokemon: {
     type: Object,
@@ -13,7 +14,7 @@ defineProps({
   <div class="card">
     <router-link :to="`/pokemon/${pokemon.name}`">
         <div class="image">
-        <span class="pokemon-number">#{{ ('000'+pokemon.id).slice(-'000'.length)}}</span>
+        <span class="pokemon-number">#{{ formatingPokemonId(pokemon.id)}}</span>
         <img class="zoom-in" width="10" :alt="pokemon.name" :src="pokemon.img" />
         <strong class="name">{{ pokemon.name.toUpperCase() }}</strong>
       </div>
@@ -36,7 +37,7 @@ defineProps({
 
 .image {
   cursor: pointer;
-  background: rgb(228, 226, 226);
+  background: rgb(248, 233, 405);
   width: 235px;
   height: 235px;
   color: #e1ede7;
