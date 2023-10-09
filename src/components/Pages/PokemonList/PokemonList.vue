@@ -1,33 +1,46 @@
 <template>
-    <div v-if="isLoading" class="flex justify-center items-center min-h-screen">
-        <Loader/>
-    </div>
-        <div v-else class="flex flex-wrap justify-evenly max-w-[90vw] mx-auto max-h-[90%] mt-14">
-          <div v-for="(pokemon, i)  in pokemonStore.pokemonsList" :key="i">
-            <PokemonCard  :pokemon="pokemon" />
-          </div>
-      </div>
-    <Pagination v-show="!isLoading" class="flex justify-center w-full mb-14" :pageIndex="pokemonStore.pageIndex" @pageNumberListner="handlePagination"/>
+  <PokemonListTemplate
+    :isLoading="isLoading"
+    :pokemonsList="pokemonStore.pokemonsList"
+    :pageIndex="pokemonStore.pageIndex"
+    @inputHandler="handleSearch"
+    @handlePagination="handlePagination"
+  />
 </template>
 
 <script setup lang="ts">
-import Loader from '@/components/Atoms/Loader/Loader.vue'
+import PokemonListTemplate from '@/components/templates/PokemonsListTemplate.vue'
 import { usePokemonStore } from '@/stores/PokemonStore'
-import PokemonCard from '@/components/Molecules/PokemonCard/PokemonCard.vue'
-import Pagination from '@/components/Atoms/Pagination/Pagination.vue'
+import { getPokemonDetailsAPI } from '@/services/api.ts'
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 const pokemonStore = usePokemonStore()
+const router = useRouter()
 const isLoading = ref(true)
 if (pokemonStore.pokemonsList.length === 0) {
-    isLoading.value = true;
-pokemonStore.fetchPokemons(0, 25).then(() =>isLoading.value = false)
+  isLoading.value = true
+  pokemonStore.fetchPokemons(0, 25).then(() => (isLoading.value = false))
 } else {
-    isLoading.value= false;
+  isLoading.value = false
 }
-async function handlePagination(page : number) { 
-    isLoading.value = true;
-    pokemonStore.updatePageIndex(page)
-   await  pokemonStore.fetchPokemons((page - 1)*25, 25)
-    isLoading.value = false;
+const handleSearch = async (data): void => {
+  try {
+    const response = await getPokemonDetailsAPI(data)
+    if (response) {
+      await pokemonStore.fetchPokemonDetails(data, response)
+      router.push({
+        name: 'pokemon-detail',
+        params: { name: data }
+      })
+    }
+  } catch (error) {
+    alert('Pokemon was not Found')
+  }
+}
+async function handlePagination(page: number) {
+  isLoading.value = true
+  pokemonStore.updatePageIndex(page)
+  await pokemonStore.fetchPokemons((page - 1) * 25, 25)
+  isLoading.value = false
 }
 </script>

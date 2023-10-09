@@ -2,40 +2,40 @@
   <span class="commun" :class="pokemonType">{{ pokemonType }}</span>
 </template>
 <script setup lang="ts">
-  import { defineProps } from 'vue';
- defineProps({
-  pokemonType : {
-      type : String,
-      default:''
-    }
+import { defineProps } from 'vue'
+defineProps({
+  pokemonType: {
+    type: String,
+    default: ''
+  }
 })
 </script>
 
 <style scoped>
- .commun{
-   border-radius: 5px;
-   color: white;
-   padding: 5px 10px;
- }
+.commun {
+  border-radius: 5px;
+  color: white;
+  padding: 5px 10px;
+}
 .fire {
-  background-color: #FA8072;
+  background-color: #fa8072;
 }
 
-.water{
-  background-color: #87CEEB;
+.water {
+  background-color: #87ceeb;
 }
 
 .grass {
-  background-color: #32CD32;
+  background-color: #32cd32;
 }
 .bug {
-background-color: #808000;
+  background-color: #808000;
 }
-.flying{
- background-color: #FF8C00;
+.flying {
+  background-color: #ff8c00;
 }
-.poison{
-background-color: 	#DA70D6;
+.poison {
+  background-color: #da70d6;
 }
 
 .normal {
@@ -77,6 +77,4 @@ background-color: 	#DA70D6;
 .fairy {
   background-color: #e29dac;
 }
-
 </style>
-

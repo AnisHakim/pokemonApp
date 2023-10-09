@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import Header from "@/components/Molecules/Header/Header.vue";
-import {  RouterView } from 'vue-router'
-import '@/assets/tailwind.css';
+import Header from '@/components/Molecules/Header/Header.vue'
+import { RouterView } from 'vue-router'
+import '@/assets/tailwind.css'
 </script>
 
 <template>
-    <Header />
+  <Header />
   <RouterView />
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

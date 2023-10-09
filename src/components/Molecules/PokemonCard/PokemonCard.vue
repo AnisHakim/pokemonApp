@@ -38,7 +38,7 @@ defineProps({
 <style>
 .image-container {
   cursor: pointer;
-  background: #F8E9FF;
+  background: #f8e9ff;
   color: #e1ede7;
   border: 1px solid #eee;
   border-radius: 2px;
