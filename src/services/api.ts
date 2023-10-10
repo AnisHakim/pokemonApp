@@ -21,6 +21,6 @@ export async function getPokemonDetailsAPI(nameOrId: string) {
     }
     return await response.json()
   } catch (error) {
-    throw new Error('Error fetching Pokemon details: ' + error.message)
+    throw new Error('Error fetching Pokemon details: ' + error)
   }
 }

@@ -6,7 +6,7 @@ export const usePokemonStore = defineStore('pokemonStore', {
   state: (): {
     pokemonsList: Pokemon[]
     pokemonDetails: PokemonDetails
-    pageIndex: Number
+    pageIndex: number
   } => ({
     pokemonsList: [],
     pokemonDetails: {
@@ -46,14 +46,15 @@ export const usePokemonStore = defineStore('pokemonStore', {
       this.pokemonsList = newList
     },
     async fetchPokemonDetails(
-      nameOrId: string,
+      nameOrId: string | string[],
       searchResponse: Object | null = null
     ): Promise<void> {
-      let response = {}
+      const pokemonName = (Array.isArray(nameOrId) ? nameOrId[0] : nameOrId) ?? '';
+      let response: any;
       if (searchResponse) {
         response = searchResponse
       } else {
-        response = await getPokemonDetailsAPI(nameOrId)
+        response = await getPokemonDetailsAPI(pokemonName)
       }
       if (response?.id) {
         this.pokemonDetails.id = response.id

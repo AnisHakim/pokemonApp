@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { Progress } from 'flowbite-vue'
 import { defineProps, onMounted, ref } from 'vue'
 const props = defineProps({
@@ -12,30 +12,30 @@ const props = defineProps({
   }
 })
 const labelRef = ref(props.label)
-const colorRef = ref(props.color)
+let colorRef: any = 'blue'
 
 onMounted(() => {
   switch (labelRef.value) {
     case 'HP':
-      colorRef.value = 'blue'
+      colorRef = 'blue'
       break
     case 'ATTACK':
-      colorRef.value = 'red'
+      colorRef = 'red'
       break
     case 'DEFENSE':
-      colorRef.value = 'green'
+      colorRef = 'green'
       break
     case 'SPECIAL-ATTACK':
-      colorRef.value = 'indigo'
+      colorRef = 'indigo'
       break
     case 'SPECIAL-DEFENSE':
-      colorRef.value = 'purple'
+      colorRef = 'purple'
       break
     case 'SPEED':
-      colorRef.value = 'yellow'
+      colorRef = 'yellow'
       break
     default:
-      colorRef.value = 'blue'
+      colorRef = 'blue'
   }
 })
 </script>

@@ -13,8 +13,8 @@
 
 <script setup lang="ts">
 import PokemonListTemplate from '@/components/templates/PokemonsListTemplate.vue'
-import { usePokemonStore } from '@/stores/PokemonStore'
-import { getPokemonDetailsAPI } from '@/services/api.ts'
+import { usePokemonStore } from '@/stores/pokemonStore'
+import { getPokemonDetailsAPI } from '@/services/api'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 const pokemonStore = usePokemonStore()

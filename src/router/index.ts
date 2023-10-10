@@ -3,7 +3,7 @@ import PokemonListVue from '@/components/Pages/PokemonList/PokemonList.vue'
 import PokemonDetail from '@/components/Pages/PokemonDetail/PokemonDetail.vue'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
   routes: [
     {
       path: '/',
