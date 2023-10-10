@@ -1,9 +1,9 @@
 import { mount } from '@vue/test-utils';
-import Modal from '@/components/Molecules/Modal/Modal.vue';
+import ModalMolecule from '@/components/Molecules/Modal/ModalMolecule.vue';
 
 describe('Modal', () => {
   it('renders with correct title and content when visible is true', async () => {
-    const wrapper = mount(Modal, {
+    const wrapper = mount(ModalMolecule, {
       props: {
         visible: true,
         title: 'Sample Modal Title'
@@ -20,7 +20,7 @@ describe('Modal', () => {
   });
 
   it('does not render when visible is false', () => {
-    const wrapper = mount(Modal, {
+    const wrapper = mount(ModalMolecule, {
       props: {
         visible: false,
         title: 'Sample Modal Title'

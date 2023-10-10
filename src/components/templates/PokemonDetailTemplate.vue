@@ -1,7 +1,7 @@
 <template>
   <div class="bg-[#F8E9FF] w-full h-screen flex justify-center items-center">
     <div v-if="isLoading">
-      <Loader />
+      <LoaderAtom />
     </div>
     <div
       v-else
@@ -41,7 +41,7 @@
 <script setup lang="ts">
 import ProgressBar from '@/components/Atoms/ProgressBar/ProgressBar.vue'
 import PokemonType from '@/components/Atoms/PokemonType/PokemonType.vue'
-import Loader from '@/components/Atoms/Loader/Loader.vue'
+import LoaderAtom from '@/components/Atoms/Loader/LoaderAtom.vue'
 import type { PokemonDetails } from '@/utils/interface.ts';
 interface Props {
   pokemonGetDetails?: PokemonDetails
