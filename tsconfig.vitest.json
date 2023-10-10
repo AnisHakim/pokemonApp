@@ -10,5 +10,5 @@
     "src/**/*.ts",      // Inclure tous les fichiers TypeScript
     "src/**/*.d.ts",     // Inclure les fichiers de définition TypeScript
     "src/**/*.vue"       // Inclure les fichiers Vue.js single-file components
-  ]
+, "src/main.js"  ]
 }
