@@ -5,6 +5,7 @@
     :pageIndex="pokemonStore.pageIndex"
     @inputHandler="handleSearch"
     @handlePagination="handlePagination"
+    @selectHandler="selectHandler"
   />
 </template>
 
@@ -23,7 +24,7 @@ if (pokemonStore.pokemonsList.length === 0) {
 } else {
   isLoading.value = false
 }
-const handleSearch = async (data): void => {
+const handleSearch = async (data: string): Promise<void> => {
   try {
     const response = await getPokemonDetailsAPI(data)
     if (response) {
@@ -37,7 +38,10 @@ const handleSearch = async (data): void => {
     alert('Pokemon was not Found')
   }
 }
-async function handlePagination(page: number) {
+const selectHandler = (data: string) => {
+  pokemonStore.sortPokemons(data)
+}
+async function handlePagination(page: number): Promise<void> {
   isLoading.value = true
   pokemonStore.updatePageIndex(page)
   await pokemonStore.fetchPokemons((page - 1) * 25, 25)

@@ -8,7 +8,7 @@ export const getPokemonsAPI = async (i: number) => {
       throw new Error('Failed to fetch data')
     }
   } catch (error) {
-    console.error('Error fetching data:', error)
+    alert(error)
     throw error
   }
 }

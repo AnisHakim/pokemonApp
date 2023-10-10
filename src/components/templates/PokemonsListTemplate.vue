@@ -7,6 +7,12 @@
       class="mb-4"
       type="number"
     />
+    <Select
+      v-if="!isLoading"
+      :options="options"
+      @selectHandler="handleSelectOption"
+      :text="'Select a sort option...'"
+    />
   </div>
   <div v-if="isLoading" class="flex justify-center items-center min-h-screen">
     <Loader />
@@ -17,7 +23,6 @@
     </div>
   </div>
   <Pagination
-    v-show="!isLoading"
     class="flex justify-center w-full mb-14"
     :pageIndex="pageIndex"
     @pageNumberListner="handlePagination"
@@ -29,19 +34,27 @@ import Loader from '@/components/Atoms/Loader/Loader.vue'
 import PokemonCard from '@/components/Molecules/PokemonCard/PokemonCard.vue'
 import Pagination from '@/components/Atoms/Pagination/Pagination.vue'
 import Input from '@/components/Atoms/Input/Input.vue'
+import Select from '@/components/Atoms/Select/Select.vue'
 import { Pokemon } from '@/utils/interface.ts'
 import { defineProps } from 'vue'
+const options = [
+  { label: 'ID Asc', value: 1 },
+  { label: 'Alphabetically Asc', value: 2 },
+  { label: 'Alphabetically Dsc', value: 3 }
+]
 type Props = {
   isLoading: boolean
   pokemonsList: Pokemon[]
   pageIndex: number
 }
 const { isLoading = true, pokemonsList = [], pageIndex = 1 } = defineProps<Props>()
-const emits = defineEmits(['inputHandler', 'handlePagination'])
+const emits = defineEmits(['inputHandler', 'handlePagination', 'selectHandler'])
 const handleSearch = (data: string) => {
   emits('inputHandler', data)
 }
-
+const handleSelectOption = (data: string) => {
+  emits('selectHandler', data)
+}
 const handlePagination = (page: number) => {
   emits('handlePagination', page)
 }

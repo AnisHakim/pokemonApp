@@ -78,6 +78,21 @@ export const usePokemonStore = defineStore('pokemonStore', {
     },
     updatePageIndex(pageIndex: number) {
       this.pageIndex = pageIndex
+    },
+    sortPokemons(data: Number) {
+      switch (data) {
+        case 1:
+          this.pokemonsList = this.pokemonsList.slice().sort((a, b) => a.id - b.id)
+          break
+        case 2:
+          this.pokemonsList = this.pokemonsList.slice().sort((a, b) => a.name.localeCompare(b.name))
+          break
+        case 3:
+          this.pokemonsList = this.pokemonsList.slice().sort((a, b) => b.name.localeCompare(a.name))
+          break
+        default:
+          break
+      }
     }
   }
 })

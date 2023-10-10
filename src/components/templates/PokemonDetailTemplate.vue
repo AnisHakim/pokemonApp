@@ -39,6 +39,9 @@
   </div>
 </template>
 <script setup lang="ts">
+import ProgressBar from '@/components/Atoms/ProgressBar/ProgressBar.vue'
+import PokemonType from '@/components/Atoms/PokemonType/PokemonType.vue'
+import Loader from '@/components/Atoms/Loader/Loader.vue'
 import { PokemonDetails } from '@/utils/interface.ts'
 interface Props {
   pokemonGetDetails?: PokemonDetails
