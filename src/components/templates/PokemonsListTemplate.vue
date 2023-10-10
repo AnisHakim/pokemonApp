@@ -27,16 +27,24 @@
     :pageIndex="pageIndex"
     @pageNumberListner="handlePagination"
   />
+  <Modal :visible="isOpenModal" @closeModal="handleCloseModal">
+    <img src="@/assets/images/pokemon.jpeg" />
+    <div>Pokemon was not Found !</div>
+  </Modal>
 </template>
 
 <script setup lang="ts">
 import Loader from '@/components/Atoms/Loader/Loader.vue'
+import Modal from '@/components/Molecules/Modal/Modal.vue'
 import PokemonCard from '@/components/Molecules/PokemonCard/PokemonCard.vue'
 import Pagination from '@/components/Atoms/Pagination/Pagination.vue'
 import Input from '@/components/Atoms/Input/Input.vue'
 import Select from '@/components/Atoms/Select/Select.vue'
 import { Pokemon } from '@/utils/interface.ts'
 import { defineProps } from 'vue'
+const handleCloseModal = () => {
+  emits('closeModal')
+}
 const options = [
   { label: 'ID Asc', value: 1 },
   { label: 'Alphabetically Asc', value: 2 },
@@ -46,9 +54,15 @@ type Props = {
   isLoading: boolean
   pokemonsList: Pokemon[]
   pageIndex: number
+  isOpenModal: boolean
 }
-const { isLoading = true, pokemonsList = [], pageIndex = 1 } = defineProps<Props>()
-const emits = defineEmits(['inputHandler', 'handlePagination', 'selectHandler'])
+const {
+  isLoading = true,
+  pokemonsList = [],
+  pageIndex = 1,
+  isOpenModal = false
+} = defineProps<Props>()
+const emits = defineEmits(['inputHandler', 'handlePagination', 'selectHandler', 'closeModal'])
 const handleSearch = (data: string) => {
   emits('inputHandler', data)
 }
