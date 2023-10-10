@@ -22,7 +22,7 @@ defineProps<{
   text: string
 }>()
 const emit = defineEmits<{
-  (e: 'selectHandler', value: String): void
+  (e: 'selectHandler', value: string): void
 }>()
 const handleChange = () => {
   emit('selectHandler', selectedOption.value)

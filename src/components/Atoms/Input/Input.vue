@@ -19,7 +19,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { defineProps } from 'vue'
 defineProps({
   placeholder: {
     type: String,
@@ -32,7 +31,7 @@ defineProps({
 })
 const inputValue = ref('')
 const emit = defineEmits<{
-  (e: 'inputHandler', value: String): void
+  (e: 'inputHandler', value: string): void
 }>()
 const onClickHandler = () => {
   if (inputValue.value.toString().trim() !== '') {

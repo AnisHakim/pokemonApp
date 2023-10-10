@@ -11,26 +11,19 @@
       "path": "./tsconfig.vitest.json"
     }
   ],
-    "compilerOptions": {
-      "target": "esnext",
-      "module": "esnext",
-      "moduleResolution": "node",
-      "strict": true,
-      "jsx": "preserve",
-      "esModuleInterop": true,
-      "skipLibCheck": true,
-      "forceConsistentCasingInFileNames": true,
-      "paths": {
-        "@/*": ["src/*"]
-       }
-    },
-    "include": [
-      "src/**/*", //if it happend in inside src
-      "components/**/*",
-      "src/**/*.ts", // Include TypeScript files in the src directory
-      "src/**/*.d.ts", // Include declaration files
-      "src/**/*.tsx", // Include TypeScript with JSX files
-      "src/**/*.vue" // Include Vue.js single-file components
-    ]
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "strictPropertyInitialization": false,
+    "jsx": "preserve"
+  },
+  "include": ["src/**/*.ts", "tests/**/*.ts"],
+  "exclude": ["node_modules"]
 }
 

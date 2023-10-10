@@ -40,7 +40,7 @@ import PokemonCard from '@/components/Molecules/PokemonCard/PokemonCard.vue'
 import Pagination from '@/components/Atoms/Pagination/Pagination.vue'
 import Input from '@/components/Atoms/Input/Input.vue'
 import Select from '@/components/Atoms/Select/Select.vue'
-import { Pokemon } from '@/utils/interface.ts'
+import type { Pokemon } from '@/utils/interface.ts'
 import { defineProps } from 'vue'
 const handleCloseModal = () => {
   emits('closeModal')

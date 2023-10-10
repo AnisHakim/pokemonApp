@@ -1,7 +1,7 @@
 import { formatingPokemonId } from '@/utils'
 import { defineStore } from 'pinia'
 import { getPokemonsAPI, getPokemonDetailsAPI } from '@/services/api'
-import { Pokemon, PokemonDetails } from '@/utils/interface.ts'
+import type { Pokemon, PokemonDetails } from '@/utils/interface.ts'
 export const usePokemonStore = defineStore('pokemonStore', {
   state: (): {
     pokemonsList: Pokemon[]

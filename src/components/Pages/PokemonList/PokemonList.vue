@@ -47,7 +47,7 @@ const handleSearch = async (data: string): Promise<void> => {
     isLoading.value = false
   }
 }
-const selectHandler = (data: string) => {
+const selectHandler = (data: Number) => {
   pokemonStore.sortPokemons(data)
 }
 async function handlePagination(page: number): Promise<void> {
