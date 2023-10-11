@@ -12,30 +12,30 @@ const props = defineProps({
   }
 })
 const labelRef = ref(props.label)
-let colorRef: any = 'blue'
+let colorRef: any = ref('blue')
 
 onMounted(() => {
   switch (labelRef.value) {
     case 'HP':
-      colorRef = 'blue'
+      colorRef.value = 'blue'
       break
     case 'ATTACK':
-      colorRef = 'red'
+      colorRef.value = 'red'
       break
     case 'DEFENSE':
-      colorRef = 'green'
+      colorRef.value = 'green'
       break
     case 'SPECIAL-ATTACK':
-      colorRef = 'indigo'
+      colorRef.value = 'indigo'
       break
     case 'SPECIAL-DEFENSE':
-      colorRef = 'purple'
+      colorRef.value = 'purple'
       break
     case 'SPEED':
-      colorRef = 'yellow'
+      colorRef.value = 'yellow'
       break
     default:
-      colorRef = 'blue'
+      colorRef.value = 'blue'
   }
 })
 </script>
